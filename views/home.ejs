@@ -1,0 +1,41 @@
+<%- include("header") -%>
+
+<div class="container">
+    <nav class="navbar navbar-light text-center justify-content-center mt-4">
+        <form class="form-inline" action="/" method="POST">
+          <input class="form-control mr-sm-2 searchBox" type="search" name="cityName" placeholder="Search City" aria-label="Search" required>
+          <button class="btn btn-outline-success my-2 my-sm-0 searchIcon" type="submit">Search</button>
+        </form>
+    </nav>
+</div>
+
+<h4 class="text-center text-light">Weather Result for City: <span class="text-primary city"> <%= cityName %> </span><h4>
+<h2 class="text-center text-light">The temp is: <span class="text-primary"> <%= tempBody %> &#8451; </span></h2>
+
+<% if(tempBody === "NA"){ %>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="text-danger">No Data Found, Search Again</h1>
+            </div>
+        </div>
+    </div>        
+<% } else { %>
+    <div class="container mt-4 border-top">
+        <div class="row mt-4">
+            <div class="col-sm-4 rightContainer">
+                <h4 class="text-light"> <span class="city"><%= cityName %></span>, <%= country %></h4>
+                <p class="text-light"><%= date %></p>
+                <img src="<%=imgUrl%>" alt="icon"> <span class="text-light font-weight-normal"> <%= description %> </span>
+            </div>
+            <div class="col-sm-8">
+                <h4 class="text-light">Humidity: <span class="text-success"><%=humidity%> %</span></h4>
+                <h4 class="text-light">Wind Speed: <span class="text-success"> <%=windSpeed%> Km/h </span></h4>
+            </div>
+        </div>
+    </div>
+<% } %>
+
+
+
+<%- include("footer") -%>
